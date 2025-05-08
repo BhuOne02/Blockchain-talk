@@ -40,8 +40,6 @@ contract ChatApp {
         require(!checkUserExists(msg.sender), "User already exists");
         require(bytes(name).length > 0, "Username cannot be empty");
 
-        
-
         users[msg.sender].name = name;
         allUsers.push(AllUserStruct(name, msg.sender));
     }
