@@ -1,0 +1,24 @@
+.Error {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background-color: #fef2f2;
+  border-top: 1px solid #fee2e2;
+}
+
+.Error_box {
+  background-color: #fee2e2;
+  border: 1px solid #f87171;
+  padding: 18px 28px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1);
+  color: #b91c1c;
+  font-weight: 500;
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}

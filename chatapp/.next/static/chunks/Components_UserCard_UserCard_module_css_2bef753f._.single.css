@@ -1,0 +1,70 @@
+/* [project]/Components/UserCard/UserCard.module.css [client] (css) */
+.UserCard-module__CHm8FG__UserCard {
+  background: #1e1e1e;
+  border: 1px solid #2d2d2d;
+  border-radius: .75rem;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  transition: transform .2s, box-shadow .2s;
+  display: flex;
+}
+
+.UserCard-module__CHm8FG__UserCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px #00000073;
+}
+
+.UserCard-module__CHm8FG__UserCard_box {
+  flex-shrink: 0;
+}
+
+.UserCard-module__CHm8FG__UserCard_box_info {
+  flex-direction: column;
+  flex: 1;
+  display: flex;
+}
+
+.UserCard-module__CHm8FG__UserCard_box_info h3 {
+  color: #fff;
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.UserCard-module__CHm8FG__UserCard_box_info p {
+  color: #bdbdbd;
+  word-break: break-word;
+  margin: .25rem 0 .75rem;
+  font-size: .85rem;
+}
+
+.UserCard-module__CHm8FG__UserCard_box_info button {
+  color: #fff;
+  cursor: pointer;
+  background: #2563eb;
+  border: none;
+  border-radius: .5rem;
+  align-self: flex-start;
+  padding: .45rem 1.1rem;
+  font-size: .85rem;
+  font-weight: 500;
+  transition: background .18s;
+}
+
+.UserCard-module__CHm8FG__UserCard_box_info button:hover {
+  background: #1d4ed8;
+}
+
+@media (width <= 480px) {
+  .UserCard-module__CHm8FG__UserCard {
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .UserCard-module__CHm8FG__UserCard_box_info button {
+    align-self: center;
+  }
+}
+
+/*# sourceMappingURL=Components_UserCard_UserCard_module_css_2bef753f._.single.css.map*/

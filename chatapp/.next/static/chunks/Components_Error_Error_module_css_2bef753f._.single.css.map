@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/Components/Error/Error.module.css"],"sourcesContent":[".Error {\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  padding: 24px;\n  background-color: #fef2f2;\n  border-top: 1px solid #fee2e2;\n}\n\n.Error_box {\n  background-color: #fee2e2;\n  border: 1px solid #f87171;\n  padding: 18px 28px;\n  border-radius: 8px;\n  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1);\n  color: #b91c1c;\n  font-weight: 500;\n  text-align: center;\n  max-width: 600px;\n  width: 100%;\n  font-size: 0.95rem;\n  line-height: 1.5;\n}"],"names":[],"mappings":"AAAA;;;;;;;;;;AAUA"}}]
+}

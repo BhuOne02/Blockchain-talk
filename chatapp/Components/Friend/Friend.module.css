@@ -1,0 +1,33 @@
+.Friend {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: #f5f7fb;
+}
+
+.Friend_box {
+  display: flex;
+  width: 95%;
+  max-width: 1300px;
+  height: 100%;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+}
+
+.Friend_box_left {
+  flex: 1;
+  border-right: 1px solid #e0e0e0;
+  overflow-y: auto;
+  padding: 20px;
+  background-color: #fafafa;
+}
+
+.Friend_box_right {
+  flex: 2;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #fff;
+}

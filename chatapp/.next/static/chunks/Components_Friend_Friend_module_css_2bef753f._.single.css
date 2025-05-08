@@ -1,0 +1,36 @@
+/* [project]/Components/Friend/Friend.module.css [client] (css) */
+.Friend-module__S9zcFG__Friend {
+  background-color: #f5f7fb;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+}
+
+.Friend-module__S9zcFG__Friend_box {
+  background: #fff;
+  border-radius: 12px;
+  width: 95%;
+  max-width: 1300px;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 5px 20px #0000000d;
+}
+
+.Friend-module__S9zcFG__Friend_box_left {
+  background-color: #fafafa;
+  border-right: 1px solid #e0e0e0;
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.Friend-module__S9zcFG__Friend_box_right {
+  background-color: #fff;
+  flex: 2;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/*# sourceMappingURL=Components_Friend_Friend_module_css_2bef753f._.single.css.map*/

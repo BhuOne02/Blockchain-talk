@@ -1,0 +1,88 @@
+/* [project]/Components/Filter/Filter.module.css [client] (css) */
+.Filter-module__q5qPXG__Filter {
+  background: #121212;
+  border-bottom: 1px solid #1f1f1f;
+  width: 100%;
+  padding: 1rem;
+}
+
+.Filter-module__q5qPXG__Fitler_box {
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  max-width: 950px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.Filter-module__q5qPXG__Fitler_box_left {
+  background: #1b1b1b;
+  border-radius: .6rem;
+  flex: 1;
+  align-items: center;
+  gap: .75rem;
+  padding: .6rem 1rem;
+  display: flex;
+}
+
+.Filter-module__q5qPXG__Fitler_box_left input {
+  color: #f1f1f1;
+  background: none;
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 1rem;
+}
+
+.Filter-module__q5qPXG__Fitler_box_left input::placeholder {
+  color: #999;
+}
+
+.Filter-module__q5qPXG__Fitler_box_right {
+  align-items: center;
+  gap: .75rem;
+  display: flex;
+}
+
+.Filter-module__q5qPXG__Fitler_box_right button {
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  border-radius: .5rem;
+  align-items: center;
+  gap: .5rem;
+  padding: .5rem 1rem;
+  font-size: .9rem;
+  font-weight: 500;
+  transition: background .2s;
+  display: flex;
+}
+
+.Filter-module__q5qPXG__Fitler_box_right button:first-child {
+  background: #dc2626;
+}
+
+.Filter-module__q5qPXG__Fitler_box_right button:first-child:hover {
+  background: #b91c1c;
+}
+
+.Filter-module__q5qPXG__Fitler_box_right button:nth-child(2) {
+  background: #2563eb;
+}
+
+.Filter-module__q5qPXG__Fitler_box_right button:nth-child(2):hover {
+  background: #1e40af;
+}
+
+.Filter-module__q5qPXG__Filter_model {
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+  background: #000000a6;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: fixed;
+  inset: 0;
+}
+
+/*# sourceMappingURL=Components_Filter_Filter_module_css_2bef753f._.single.css.map*/

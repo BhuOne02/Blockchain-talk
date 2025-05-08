@@ -1,0 +1,435 @@
+/* [project]/styles/globals.css [client] (css) */
+@layer theme {
+  :root, :host {
+    --default-font-family: var(--font-geist-sans);
+    --default-mono-font-family: var(--font-geist-mono);
+  }
+}
+
+@layer base {
+  *, :after, :before, ::backdrop, ::file-selector-button {
+    box-sizing: border-box;
+    border: 0 solid;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, :host {
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    line-height: 1.5;
+    font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+    font-feature-settings: var(--default-font-feature-settings, normal);
+    font-variation-settings: var(--default-font-variation-settings, normal);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  hr {
+    height: 0;
+    color: inherit;
+    border-top-width: 1px;
+  }
+
+  abbr:where([title]) {
+    text-decoration: underline dotted;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+  a {
+    color: inherit;
+    -webkit-text-decoration: inherit;
+    text-decoration: inherit;
+  }
+
+  b, strong {
+    font-weight: bolder;
+  }
+
+  code, kbd, samp, pre {
+    font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+    font-feature-settings: var(--default-mono-font-feature-settings, normal);
+    font-variation-settings: var(--default-mono-font-variation-settings, normal);
+    font-size: 1em;
+  }
+
+  small {
+    font-size: 80%;
+  }
+
+  sub, sup {
+    vertical-align: baseline;
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+  }
+
+  sub {
+    bottom: -.25em;
+  }
+
+  sup {
+    top: -.5em;
+  }
+
+  table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+  }
+
+  :-moz-focusring {
+    outline: auto;
+  }
+
+  progress {
+    vertical-align: baseline;
+  }
+
+  summary {
+    display: list-item;
+  }
+
+  ol, ul, menu {
+    list-style: none;
+  }
+
+  img, svg, video, canvas, audio, iframe, embed, object {
+    vertical-align: middle;
+    display: block;
+  }
+
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  button, input, select, optgroup, textarea, ::file-selector-button {
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    opacity: 1;
+    background-color: #0000;
+    border-radius: 0;
+  }
+
+  :where(select:is([multiple], [size])) optgroup {
+    font-weight: bolder;
+  }
+
+  :where(select:is([multiple], [size])) optgroup option {
+    padding-inline-start: 20px;
+  }
+
+  ::file-selector-button {
+    margin-inline-end: 4px;
+  }
+
+  ::placeholder {
+    opacity: 1;
+  }
+
+  @supports (not ((-webkit-appearance: -apple-pay-button))) or (contain-intrinsic-size: 1px) {
+    ::placeholder {
+      color: currentColor;
+    }
+
+    @supports (color: color-mix(in lab, red, red)) {
+      ::placeholder {
+        color: color-mix(in oklab, currentcolor 50%, transparent);
+      }
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  ::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+
+  ::-webkit-date-and-time-value {
+    min-height: 1lh;
+    text-align: inherit;
+  }
+
+  ::-webkit-datetime-edit {
+    display: inline-flex;
+  }
+
+  ::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+
+  ::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
+    padding-block: 0;
+  }
+
+  :-moz-ui-invalid {
+    box-shadow: none;
+  }
+
+  button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-selector-button {
+    appearance: button;
+  }
+
+  ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+    height: auto;
+  }
+
+  [hidden]:where(:not([hidden="until-found"])) {
+    display: none !important;
+  }
+}
+
+@layer components, utilities;
+
+:root {
+  --background: #fff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none, ;
+}
+
+
+/* [project]/Components/NavBar/NavBar.module.css [client] (css) */
+.NavBar-module__F_PfMG__NavBar {
+  z-index: 100;
+  background-color: #fff;
+  width: 100%;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 2px 8px #0000000d;
+}
+
+.NavBar-module__F_PfMG__NavBar_box {
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.NavBar-module__F_PfMG__NavBar_box_left {
+  align-items: center;
+  display: flex;
+}
+
+.NavBar-module__F_PfMG__NavBar_box_right {
+  align-items: center;
+  gap: 30px;
+  display: flex;
+}
+
+.NavBar-module__F_PfMG__NavBar_box_right_menu {
+  gap: 20px;
+  display: flex;
+}
+
+.NavBar-module__F_PfMG__NavBar_box_right_menu_items {
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: background .2s;
+}
+
+.NavBar-module__F_PfMG__NavBar_box_right_menu_items:hover {
+  background-color: #f0f0f0;
+}
+
+.NavBar-module__F_PfMG__NavBar_box_right_menu_items_link {
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.NavBar-module__F_PfMG__active_btn {
+  background-color: #0070f3;
+}
+
+.NavBar-module__F_PfMG__active_btn .NavBar-module__F_PfMG__NavBar_box_right_menu_items_link {
+  color: #fff;
+}
+
+.NavBar-module__F_PfMG__NavBar_box_right_connect button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #0070f3;
+  border: none;
+  border-radius: 8px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-weight: 500;
+  transition: background .2s;
+  display: flex;
+}
+
+.NavBar-module__F_PfMG__NavBar_box_right_connect button:hover {
+  background-color: #005bb5;
+}
+
+.NavBar-module__F_PfMG__modelBox {
+  z-index: 200;
+  background-color: #0006;
+  justify-content: center;
+  width: 100%;
+  padding: 40px 20px;
+  display: flex;
+  position: fixed;
+  top: 70px;
+  left: 0;
+}
+
+
+/* [project]/Components/Model/Model.module.css [client] (css) */
+.Model-module__e1IbCa__Model {
+  z-index: 9999;
+  background: #0009;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.Model-module__e1IbCa__Model_box {
+  background: #fff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 10px 40px #0003;
+}
+
+.Model-module__e1IbCa__Model_box_left {
+  background: #f3f3f3;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  display: flex;
+}
+
+.Model-module__e1IbCa__Model_box_right {
+  flex: 1;
+  padding: 30px;
+}
+
+.Model-module__e1IbCa__Model_box_right h1 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.Model-module__e1IbCa__Model_box_right span {
+  color: #0070f3;
+}
+
+.Model-module__e1IbCa__Model_box_right p {
+  margin: 5px 0;
+}
+
+.Model-module__e1IbCa__Model_box_right small {
+  color: gray;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.Model-module__e1IbCa__Model_box_right_info {
+  align-items: center;
+  margin-bottom: 15px;
+  display: flex;
+}
+
+.Model-module__e1IbCa__Model_box_right_info input {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+  margin-left: 10px;
+  padding: 8px 12px;
+}
+
+.Model-module__e1IbCa__Model_box_right_name_btn {
+  gap: 10px;
+  display: flex;
+}
+
+.Model-module__e1IbCa__Model_box_right_name_btn button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #0070f3;
+  border: none;
+  border-radius: 6px;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  transition: background .2s ease-in-out;
+  display: flex;
+}
+
+.Model-module__e1IbCa__Model_box_right_name_btn button:hover {
+  background-color: #005bb5;
+}
+
+
+/* [project]/Components/Loader/Loader.module.css [client] (css) */
+.Loader-module__cN7BCW__Loader {
+  z-index: 9999;
+  background: #ffffffb3;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.Loader-module__cN7BCW__Loader_box {
+  justify-content: center;
+  align-items: center;
+  animation: 2s linear infinite Loader-module__cN7BCW__rotate;
+  display: flex;
+}
+
+@keyframes Loader-module__cN7BCW__rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/*# sourceMappingURL=_1f357498._.css.map*/

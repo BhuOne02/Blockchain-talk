@@ -1,0 +1,67 @@
+.UserCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: #1e1e1e;
+  border: 1px solid #2d2d2d;
+  border-radius: 0.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.UserCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+
+.UserCard_box {
+  flex-shrink: 0;
+}
+
+.UserCard_box_info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.UserCard_box_info h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.UserCard_box_info p {
+  margin: 0.25rem 0 0.75rem;
+  font-size: 0.85rem;
+  color: #bdbdbd;
+  word-break: break-word;
+}
+
+.UserCard_box_info button {
+  align-self: flex-start;
+  padding: 0.45rem 1.1rem;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+
+.UserCard_box_info button:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 480px) {
+  .UserCard {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .UserCard_box_info button {
+    align-self: center;
+  }
+}

@@ -1,0 +1,88 @@
+.NavBar {
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.NavBar_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.NavBar_box_left {
+  display: flex;
+  align-items: center;
+}
+
+.NavBar_box_right {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.NavBar_box_right_menu {
+  display: flex;
+  gap: 20px;
+}
+
+.NavBar_box_right_menu_items {
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.NavBar_box_right_menu_items:hover {
+  background-color: #f0f0f0;
+}
+
+.NavBar_box_right_menu_items_link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.active_btn {
+  background-color: #0070f3;
+}
+
+.active_btn .NavBar_box_right_menu_items_link {
+  color: #fff;
+}
+
+.NavBar_box_right_connect button {
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.NavBar_box_right_connect button:hover {
+  background-color: #005bb5;
+}
+
+.modelBox {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 200;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 40px 20px;
+}

@@ -1,0 +1,85 @@
+.Filter {
+  width: 100%;
+  padding: 1rem;
+  background: #121212;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.Fitler_box {
+  max-width: 950px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.Fitler_box_left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #1b1b1b;
+  padding: 0.6rem 1rem;
+  border-radius: 0.6rem;
+}
+
+.Fitler_box_left input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #f1f1f1;
+  font-size: 1rem;
+}
+
+.Fitler_box_left input::placeholder {
+  color: #999;
+}
+
+.Fitler_box_right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.Fitler_box_right button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: #fff;
+  transition: background 0.2s ease;
+}
+
+.Fitler_box_right button:nth-child(1) {
+  background: #dc2626;
+}
+
+.Fitler_box_right button:nth-child(1):hover {
+  background: #b91c1c;
+}
+
+.Fitler_box_right button:nth-child(2) {
+  background: #2563eb;
+}
+
+.Fitler_box_right button:nth-child(2):hover {
+  background: #1e40af;
+}
+
+.Filter_model {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+}

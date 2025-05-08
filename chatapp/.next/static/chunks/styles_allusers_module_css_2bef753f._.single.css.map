@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/styles/allusers.module.css"],"sourcesContent":[".alluser_info {\n    text-align: center;\n    margin: 40px 0 20px;\n    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\n  }\n  \n  .alluser_info h1 {\n    font-size: 32px;\n    font-weight: bold;\n    color: #333;\n  }\n  \n  .alluser {\n    display: grid;\n    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));\n    gap: 20px;\n    padding: 20px 40px;\n    box-sizing: border-box;\n  }\n  \n  @media (max-width: 768px) {\n    .alluser {\n      padding: 10px 20px;\n      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));\n    }\n  \n    .alluser_info h1 {\n      font-size: 24px;\n    }\n  }\n  "],"names":[],"mappings":"AAAA;;;;;;AAME;;;;;;AAMA;;;;;;;;AAQA;EACE;;;;;EAKA"}}]
+}

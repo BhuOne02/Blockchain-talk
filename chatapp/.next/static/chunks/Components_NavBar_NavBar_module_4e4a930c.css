@@ -1,0 +1,92 @@
+/* [project]/Components/NavBar/NavBar.module.css [client] (css) */
+.NavBar-module__F_PfMG__NavBar {
+  z-index: 100;
+  background-color: #fff;
+  width: 100%;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 2px 8px #0000000d;
+}
+
+.NavBar-module__F_PfMG__NavBar_box {
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.NavBar-module__F_PfMG__NavBar_box_left {
+  align-items: center;
+  display: flex;
+}
+
+.NavBar-module__F_PfMG__NavBar_box_right {
+  align-items: center;
+  gap: 30px;
+  display: flex;
+}
+
+.NavBar-module__F_PfMG__NavBar_box_right_menu {
+  gap: 20px;
+  display: flex;
+}
+
+.NavBar-module__F_PfMG__NavBar_box_right_menu_items {
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: background .2s;
+}
+
+.NavBar-module__F_PfMG__NavBar_box_right_menu_items:hover {
+  background-color: #f0f0f0;
+}
+
+.NavBar-module__F_PfMG__NavBar_box_right_menu_items_link {
+  color: #333;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.NavBar-module__F_PfMG__active_btn {
+  background-color: #0070f3;
+}
+
+.NavBar-module__F_PfMG__active_btn .NavBar-module__F_PfMG__NavBar_box_right_menu_items_link {
+  color: #fff;
+}
+
+.NavBar-module__F_PfMG__NavBar_box_right_connect button {
+  color: #fff;
+  cursor: pointer;
+  background-color: #0070f3;
+  border: none;
+  border-radius: 8px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-weight: 500;
+  transition: background .2s;
+  display: flex;
+}
+
+.NavBar-module__F_PfMG__NavBar_box_right_connect button:hover {
+  background-color: #005bb5;
+}
+
+.NavBar-module__F_PfMG__modelBox {
+  z-index: 200;
+  background-color: #0006;
+  justify-content: center;
+  width: 100%;
+  padding: 40px 20px;
+  display: flex;
+  position: fixed;
+  top: 70px;
+  left: 0;
+}
+
+
+/*# sourceMappingURL=Components_NavBar_NavBar_module_4e4a930c.css.map*/

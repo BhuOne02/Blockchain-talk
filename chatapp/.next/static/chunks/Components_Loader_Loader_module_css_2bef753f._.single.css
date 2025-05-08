@@ -1,0 +1,32 @@
+/* [project]/Components/Loader/Loader.module.css [client] (css) */
+.Loader-module__cN7BCW__Loader {
+  z-index: 9999;
+  background: #ffffffb3;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.Loader-module__cN7BCW__Loader_box {
+  justify-content: center;
+  align-items: center;
+  animation: 2s linear infinite Loader-module__cN7BCW__rotate;
+  display: flex;
+}
+
+@keyframes Loader-module__cN7BCW__rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*# sourceMappingURL=Components_Loader_Loader_module_css_2bef753f._.single.css.map*/
