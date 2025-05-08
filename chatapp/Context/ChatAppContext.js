@@ -64,7 +64,6 @@ export const ChatAppProvider=({children})=>{
         console.log("✅ Messages:", read); // ✅ Add this
         setFriendmsg(read);
       } catch (error) {
-        console.error("❌ readMessage error:", error);
         setError("Currently No messages");
       }
     };
