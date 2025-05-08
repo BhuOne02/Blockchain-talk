@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/Components/Friend/Friend.module.css"],"sourcesContent":[".Friend {\n  width: 100%;\n  height: 100vh;\n  display: flex;\n  justify-content: center;\n  background-color: #f5f7fb;\n}\n\n.Friend_box {\n  display: flex;\n  width: 95%;\n  max-width: 1300px;\n  height: 100%;\n  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);\n  border-radius: 12px;\n  overflow: hidden;\n  background: white;\n}\n\n.Friend_box_left {\n  flex: 1;\n  border-right: 1px solid #e0e0e0;\n  overflow-y: auto;\n  padding: 20px;\n  background-color: #fafafa;\n}\n\n.Friend_box_right {\n  flex: 2;\n  padding: 20px;\n  overflow-y: auto;\n  background-color: #fff;\n}"],"names":[],"mappings":"AAAA;;;;;;;;AAQA;;;;;;;;;;;AAWA;;;;;;;;AAQA"}}]
-}

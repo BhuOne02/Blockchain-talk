@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/Components/Friend/Card/Card.module.css"],"sourcesContent":[".Card {\n  padding: 12px;\n  margin: 10px 0;\n  border-radius: 10px;\n  background-color: #f9f9f9;\n  cursor: pointer;\n  border: 1px solid #e5e5e5;\n  transition: box-shadow 0.2s ease;\n}\n\n.Card:hover {\n  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);\n}\n\n.Card_box {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\n.Card_box_left_img {\n  border-radius: 50%;\n}\n\n.Card_box_right {\n  flex: 1;\n  margin-left: 15px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.Card_box_right_middle h4 {\n  margin: 0;\n  font-size: 18px;\n  color: #333;\n}\n\n.Card_box_right_middle small {\n  color: #777;\n}\n\n.Card_box_right_end small {\n  font-weight: bold;\n  color: #aaa;\n}"],"names":[],"mappings":"AAAA;;;;;;;;;;AAUA;;;;AAIA;;;;;;AAMA;;;;AAIA;;;;;;;;AAQA;;;;;;AAMA;;;;AAIA"}}]
-}

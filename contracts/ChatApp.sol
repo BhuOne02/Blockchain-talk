@@ -25,10 +25,20 @@ contract ChatApp {
         address accountAddress;
     }
 
+    struct FriendRequestStruct {
+        string name;
+        address accountAddress;
+    }
+
     AllUserStruct[] private allUsers;
 
     mapping(address => User) private users;
     mapping(bytes32 => Message[]) private allMessages;
+    mapping(address => mapping(address => bool)) private friendRequests; // sender -> receiver
+
+    event FriendRequestSent(address indexed from, address indexed to);
+    event FriendRequestAccepted(address indexed from, address indexed to);
+
 
     // Check if a user is already registered
     function checkUserExists(address pubkey) public view returns (bool) {
@@ -100,4 +110,66 @@ contract ChatApp {
     function getAllUsers() external view returns (AllUserStruct[] memory) {
         return allUsers;
     }
+
+    function sendFriendRequest(address to, string calldata name) external {
+        require(msg.sender != to, "Can't send request to yourself");
+        require(checkUserExists(msg.sender), "You must create an account first");
+        require(checkUserExists(to), "User does not exist");
+        require(!friendRequests[msg.sender][to], "Request already sent");
+        require(!users[msg.sender].isFriend[to], "Already friends");
+
+        friendRequests[msg.sender][to] = true;
+
+        // Optional: update name if not already set
+        if (bytes(users[msg.sender].name).length == 0) {
+            users[msg.sender].name = name;
+        }
+
+        emit FriendRequestSent(msg.sender, to);
+    }
+
+
+    function acceptFriendRequest(address from) external {
+        require(friendRequests[from][msg.sender], "No request from this user");
+
+        delete friendRequests[from][msg.sender];
+
+        
+
+        _addFriend(msg.sender, from, users[from].name);
+        _addFriend(from, msg.sender, users[msg.sender].name);
+
+        emit FriendRequestAccepted(from, msg.sender);
+    }
+
+function getPendingRequests() external view returns (FriendRequestStruct[] memory) {
+    uint count;
+    for (uint i = 0; i < allUsers.length; i++) {
+        if (friendRequests[allUsers[i].accountAddress][msg.sender]) {
+            count++;
+        }
+    }
+
+    FriendRequestStruct[] memory pending = new FriendRequestStruct[](count);
+    uint index = 0;
+
+    for (uint i = 0; i < allUsers.length; i++) {
+        address from = allUsers[i].accountAddress;
+        if (friendRequests[from][msg.sender]) {
+            pending[index] = FriendRequestStruct({
+                name: users[from].name,
+                accountAddress: from
+            });
+            index++;
+        }
+    }
+
+    return pending;
+}
+
+
+
+
+
+
 }
