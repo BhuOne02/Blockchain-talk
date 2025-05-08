@@ -28,3 +28,24 @@ body {
 ::-webkit-scrollbar{
   display:none,
 }
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  padding: 8px 14px;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tabs button:hover {
+  background-color: #005bb5;
+}

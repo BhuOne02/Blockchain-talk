@@ -28,6 +28,8 @@ export const ChatAppProvider=({children})=>{
           const contract = await connectingWithContract();
           const connectAccount = await connectWallet();
           setAccount(connectAccount);
+          console.log("Calling checkUserExists on:", connectAccount);
+          
       
           // Check if user is registered
           const isUser = await contract.checkUserExists(connectAccount);
@@ -90,22 +92,30 @@ export const ChatAppProvider=({children})=>{
       };
       
 
-    const addFriend = async({accountAddress,name})=>{
+      const addFriend = async ({ accountAddress, name }) => {
         try {
-            if(!name || !accountAddress) return setError("Please Provide the name and address ")
-            const contract= await  connectingWithContract();
-            const addMyFriend= await contract.addFriend(accountAddress,name);
-            setLoading(true);
-            await addMyFriend.wait();
-            setLoading(false);
-            router.push("/");
-            window.location.reload();
+          if (!name || !accountAddress) {
+            setError("Please provide the name and address");
+            return false;
+          }
+      
+          const contract = await connectingWithContract();
+          const tx = await contract.addFriend(accountAddress, name);
+          setLoading(true);
+          await tx.wait();
+          setLoading(false);
+      
+          // ✅ Re-fetch friend list
+          const updatedFriends = await contract.getMyFriendList();
+          setFriendLists(updatedFriends);
+      
+          return true;
         } catch (error) {
-            console.log(error)
-            setError(error)
-            setError("Error while adding your friend. Try Adding again!!")
+          setError("Failed to add friend. Try again.");
+          return false;
         }
-    }
+      };
+      
 
     const sendMessage = async ({ msg, address }) => {
       try {
@@ -136,6 +146,53 @@ export const ChatAppProvider=({children})=>{
 
     }
 
+    const sendFriendRequest = async ({ to, name }) => {
+      console.log(to,"+",name)
+
+      try {
+        if (!to || !name) {
+          setError("Name or address missing");
+          return;
+        }
+        const contract = await connectingWithContract();
+        const tx = await contract.sendFriendRequest(to, name);
+        setLoading(true);
+        await tx.wait();
+        setLoading(false);
+      } catch (error) {
+        console.error("Friend request failed:", error);
+        setError("Failed to send friend request");
+      }
+    };
+    
+    const acceptFriendRequest = async (fromAddress) => {
+      try {
+        const contract = await connectingWithContract();
+        const tx = await contract.acceptFriendRequest(fromAddress);
+        setLoading(true);
+        await tx.wait();
+        setLoading(false);
+      } catch (error) {
+        console.error("Accept Friend Request Error:", error);
+        setError(extractRevertReason(error));
+      }
+    };
+    
+    const getPendingRequests = async () => {
+      try {
+        const contract = await connectingWithContract();
+        const requests = await contract.getPendingRequests(); // returns array of structs: { name, accountAddress }
+        return requests.map(req => ({
+          name: req.name,
+          accountAddress: req.accountAddress
+        }));
+      } catch (error) {
+        console.error("Error fetching pending requests", error);
+        return [];
+      }
+    };
+    
+
     return(
         <ChatAppContext.Provider value={{
             readMessage,
@@ -155,6 +212,9 @@ export const ChatAppProvider=({children})=>{
             setFriendmsg,
             CheckIfWalletConnected,
             connectWallet,
+            sendFriendRequest,
+            acceptFriendRequest,
+            getPendingRequests,
         }}>
             {children}
         </ChatAppContext.Provider>

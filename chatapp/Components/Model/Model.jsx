@@ -36,7 +36,7 @@ const Model = ({ openBox, title, head, info, smallInfo, images: modalImage, func
                 <Image src={images.user} alt="user" width={30} height={30} />
                 <input
                   type="text"
-                  placeholder="Enter Your NamE"
+                  placeholder="Enter Your Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />

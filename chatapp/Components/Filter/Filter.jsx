@@ -16,7 +16,7 @@ const Filter = () => {
       <div className={Style.Fitler_box}>
         <div className={Style.Fitler_box_left}>
           <Image src={images.search} alt="image" width={30} height={30}/>
-          <input type="text" placeholder="seach....."/>
+          <input type="text" placeholder="search....."/>
         </div>
 
         <div className={Style.Fitler_box_right}>
@@ -37,9 +37,9 @@ const Filter = () => {
             <Model
               openBox={setAddFriend}
               title="WELCOME TO"
-              head="CHAT BUDDY"
-              info="Bhuvan"
-              smallInfo="Select your friend name"
+              head="BlockTalk"
+              info="Add your friend"
+              smallInfo="Enter friend name"
               images={images.logo}
               functionName={addFriend}
               address={""} 

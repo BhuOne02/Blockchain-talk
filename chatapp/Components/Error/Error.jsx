@@ -7,7 +7,7 @@ const Error = ({error}) => {
   return (
     <div className={Style.Error}>
         <div className={Style.Error_box}>
-            <h1> Resolve the Error</h1>
+            <h1>Error</h1>
             {error}
         </div>    
     </div>

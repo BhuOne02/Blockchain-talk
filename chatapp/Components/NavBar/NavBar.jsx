@@ -11,7 +11,7 @@ const NavBar = () => {
   const menuItems = [
     { menu: "All Users", link: "/allusers" },
     { menu: "Chat", link: "/" },
-    { menu: "Contact", link: "/" },
+    { menu: "Group Chat", link: "/" },
     { menu: "Settings", link: "/" },
   ];
 
@@ -72,9 +72,8 @@ const NavBar = () => {
             <Model
               openBox={setOpenModel}
               title="WELCOME TO"
-              head="CHAT BUDDY"
-              info="Bhuvan"
-              smallInfo="Select your name"
+              head="BlockTalk"
+              info="Create your account"
               images={images.logo}
               functionName={createAccount}
               address={account}
