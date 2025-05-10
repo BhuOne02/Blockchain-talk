@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import Style from "./UserCard.module.css";
 import images from "../../assets";
+import { ChatAppContext } from "@/Context/ChatAppContext";
 
 const UserCard = ({ el, type, addFriend, sendFriendRequest, setPending, pending, getPendingRequests }) => {
+  const { acceptFriendRequest } = useContext(ChatAppContext);
+
+ 
 
 
   const handleAddFriend = async () => {
-    await addFriend({ accountAddress: el.accountAddress, name: el.name });
+
+    await acceptFriendRequest(el.accountAddress);
   
     if (getPendingRequests && setPending) {
       const updatedPending = await getPendingRequests();

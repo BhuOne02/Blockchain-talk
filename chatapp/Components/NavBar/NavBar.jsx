@@ -10,12 +10,12 @@ import { Model, Error } from "../index";
 const NavBar = () => {
   const menuItems = [
     { menu: "All Users", link: "/allusers" },
-    { menu: "Chat", link: "/" },
-    { menu: "Group Chat", link: "/" },
+    { menu: "Chat", link: "/chat" },
+    { menu: "Group Chat", link: "/group" },
     { menu: "Settings", link: "/" },
   ];
 
-  const [active, setActive] = useState(2);
+  const [active, setActive] = useState(null);
   const [openModel, setOpenModel] = useState(false);
   const [open, setOpen] = useState(false);
 

@@ -86,3 +86,9 @@
   background-color: rgba(0, 0, 0, 0.4);
   padding: 40px 20px;
 }
+
+/* NavBar.module.css (snippet) */
+.active_btn {
+  background: var(--brand-500);
+  color:#fff;
+}

@@ -1,0 +1,16 @@
+.card {
+    display: block;               /* because Link renders <a> */
+    padding: 14px 20px;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-bottom: 1px solid #ececec;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .card:hover { background: #e6e9ff; }
+  .active     { background: #d9dcff; }
+  
+  .name   { margin: 0;  font-size: 15px; font-weight: 600; }
+  .count  { color: #666; font-size: 12px; }
+  

@@ -49,3 +49,102 @@ body {
 .tabs button:hover {
   background-color: #005bb5;
 }
+
+/* ─── Force text to black inside the chat app containers ─── */
+.Group,          /* main group wrapper            */
+.Chat,           /* DM & group chat windows       */
+.modal,          /* create-group modal            */
+.card,           /* group cards in the sidebar    */
+.header,         /* sidebar header                */
+button,          /* any button text               */
+input,           /* placeholder + typed text      */
+textarea {
+  color: black !important;
+}
+
+#__next, #__next * {
+  color: #000 !important;
+}
+
+/* ─────────────  Design tokens  ───────────── */
+:root {
+  /* brand */
+  --brand-500: #3b5cff;
+  --brand-600: #3250e6;
+
+  /* greys */
+  --grey-50 : #fafbfd;
+  --grey-100: #f3f4f6;
+  --grey-200: #e5e7eb;
+  --grey-300: #d1d5db;
+  --grey-600: #4b5563;
+  --grey-900: #111827;
+
+  /* elevation */
+  --card-shadow: 0 3px 12px rgba(0, 0, 0, .08);
+
+  /* radius & spacing */
+  --radius: 14px;
+  --space-1: 6px;
+  --space-2: 12px;
+  --space-3: 18px;
+  --space-4: 24px;
+
+  /* typography */
+  --font-main: "Inter", "Segoe UI", sans-serif;
+  --fs-14: 14px;
+  --fs-16: 16px;
+  --fs-18: 18px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background: var(--grey-50);
+  color: var(--grey-900);       /* global black text */
+}
+
+/* ─────────────  Utilities  ───────────── */
+.paper {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: none;
+  border-radius: calc(var(--radius) - 6px);
+  font-size: var(--fs-14);
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background .15s;
+}
+
+.btn--primary  { background: var(--brand-500); color:#fff; }
+.btn--primary:hover  { background: var(--brand-600); }
+.btn--secondary{ background: var(--grey-100); color: var(--grey-900);}
+.btn--secondary:hover{ background: var(--grey-200); }
+
+.input {
+  width: 100%;
+  padding: 10px var(--space-2);
+  border: 1px solid var(--grey-300);
+  border-radius: calc(var(--radius) - 6px);
+  font-size: var(--fs-14);
+  outline: none;
+}
+.input:focus {
+  border-color: var(--brand-500);
+  box-shadow: 0 0 0 2px rgba(59,92,255,.15);
+}
+
+/* better scrollbars (webkit) */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb {
+  background: var(--grey-300);
+  border-radius: 6px;
+}

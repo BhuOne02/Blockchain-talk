@@ -16,6 +16,10 @@ export const ChatAppProvider=({children})=>{
     const [loading,setLoading]=useState(false);
     const [userLists,setUserLists]=useState([]);
     const [error,setError]=useState("");
+    const [groups, setGroups] = useState([]);     
+    const [currentGroup, setCurrentGroup] = useState();
+    const [groupMessages, setGroupMessages] = useState([]);
+    const [nameBook, setNameBook] = useState({});
 
     //User Data
     const [currentUserName, setCurrentUserName]=useState("")
@@ -28,7 +32,6 @@ export const ChatAppProvider=({children})=>{
           const contract = await connectingWithContract();
           const connectAccount = await connectWallet();
           setAccount(connectAccount);
-          console.log("Calling checkUserExists on:", connectAccount);
           
       
           // Check if user is registered
@@ -45,6 +48,9 @@ export const ChatAppProvider=({children})=>{
       
           const userList = await contract.getAllUsers();
           setUserLists(userList);
+
+
+          await fetchMyGroups();
         } catch (err) {
           console.error("fetchData error:", err.message);
           setError(err.message || "Please install and connect your wallet");
@@ -56,6 +62,23 @@ export const ChatAppProvider=({children})=>{
         fetchData();
     },[]);
 
+    useEffect(() => {
+      const dict = {};
+      
+        // 1. every registered user
+        userLists.forEach(u => {
+          dict[u.accountAddress.toLowerCase()] = u.name;
+        });
+      
+        // 2. make sure *you* are in the map
+        if (account)
+          dict[account.toLowerCase()] = userName || account.slice(0, 6);
+      
+        setNameBook(dict);
+      }, [userLists, userName, account]);
+      
+
+
     const readMessage = async (friendAddress) => {
       console.log("🔍 Reading messages for:", friendAddress); // ✅ Add this
       try {
@@ -64,6 +87,7 @@ export const ChatAppProvider=({children})=>{
         console.log("✅ Messages:", read); // ✅ Add this
         setFriendmsg(read);
       } catch (error) {
+
         setError("Currently No messages");
       }
     };
@@ -190,6 +214,58 @@ export const ChatAppProvider=({children})=>{
         return [];
       }
     };
+
+    const fetchMyGroups = async () => {
+      try {
+        const contract   = await connectingWithContract();
+        const gids = await contract.getMyGroups();                // uint256[]
+        const meta = [];
+        for (const gid of gids) {
+          const [gName, members] = await contract.getGroupInfo(gid);
+          meta.push({ id: gid.toNumber ? gid.toNumber() : gid, name: gName, members });
+        }
+        setGroups(meta);
+      } catch (e) { console.error("fetchMyGroups", e); }
+    };
+
+    const createGroup = async (name, memberAddresses) => {
+      try {
+        if (!name || !memberAddresses.length) return setError("Missing data");
+        const contract = await connectingWithContract();
+        const tx = await contract.createGroup(name, memberAddresses);
+        setLoading(true); await tx.wait(); setLoading(false);
+        await fetchMyGroups();                               // sidebar refresh
+      } catch (e) { setError("Create-group failed"); }
+    };
+
+    const openGroup = async (gid) => {
+      setCurrentGroup(gid);
+      await readGroupMessages(gid);
+      router.push(`/group/${gid}`);          // <── route change
+    };
+
+    const readGroupMessages = async (gid) => {
+      try {
+        const contract = await connectingWithContract();
+        setGroupMessages(await contract.readGroupMessages(gid));
+      } catch (e) { console.error("readGroupMessages", e); }
+    };
+
+    const sendGroupMessage = async (gid, msg) => {
+      if (!msg) return;
+      try {
+        const contract = await connectingWithContract();
+        const tx = await contract.sendGroupMessage(gid, msg);
+        await tx.wait();
+        await readGroupMessages(gid);                        // live refresh
+      } catch (e) { setError("Group msg error"); }
+    };
+  
+
+
+
+
+
     
 
     return(
@@ -214,6 +290,16 @@ export const ChatAppProvider=({children})=>{
             sendFriendRequest,
             acceptFriendRequest,
             getPendingRequests,
+            groups,
+            currentGroup,
+            groupMessages,
+            createGroup,
+            openGroup,
+            sendGroupMessage,
+            fetchMyGroups,
+            setCurrentGroup,
+            readGroupMessages,
+            nameBook,
         }}>
             {children}
         </ChatAppContext.Provider>
