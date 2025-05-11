@@ -169,30 +169,30 @@ contract ChatApp {
     }
 
 
-function getPendingRequests() external view returns (FriendRequestStruct[] memory) {
-    uint count;
-    for (uint i = 0; i < allUsers.length; i++) {
-        if (friendRequests[allUsers[i].accountAddress][msg.sender]) {
-            count++;
+    function getPendingRequests() external view returns (FriendRequestStruct[] memory) {
+        uint count;
+        for (uint i = 0; i < allUsers.length; i++) {
+            if (friendRequests[allUsers[i].accountAddress][msg.sender]) {
+                count++;
+            }
         }
-    }
 
-    FriendRequestStruct[] memory pending = new FriendRequestStruct[](count);
-    uint index = 0;
+        FriendRequestStruct[] memory pending = new FriendRequestStruct[](count);
+        uint index = 0;
 
-    for (uint i = 0; i < allUsers.length; i++) {
-        address from = allUsers[i].accountAddress;
-        if (friendRequests[from][msg.sender]) {
-            pending[index] = FriendRequestStruct({
-                name: users[from].name,
-                accountAddress: from
-            });
-            index++;
+        for (uint i = 0; i < allUsers.length; i++) {
+            address from = allUsers[i].accountAddress;
+            if (friendRequests[from][msg.sender]) {
+                pending[index] = FriendRequestStruct({
+                    name: users[from].name,
+                    accountAddress: from
+                });
+                index++;
+            }
         }
-    }
 
-    return pending;
-}
+        return pending;
+    }
 
  /* ────────────────  GROUP CHAT LOGIC  ──────────────── */
 
