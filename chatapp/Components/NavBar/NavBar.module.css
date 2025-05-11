@@ -21,6 +21,14 @@
   align-items: center;
 }
 
+.NavBar_heading {
+  font-size: 24px;
+  font-weight: 600;
+  margin-left: 10px;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .NavBar_box_right {
   display: flex;
   align-items: center;
