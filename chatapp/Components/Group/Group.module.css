@@ -1,37 +1,122 @@
+/* Components/Group/Group.module.css */
+
 .Group {
-    height: calc(100vh - 72px);
-    display: flex;
-    justify-content: center;
-    background: #fafafa;
-  }
-  
-  .Group_box {
-    width: 100%;
-    max-width: 1350px;
-    display: flex;
-    border-radius: 14px;
-    overflow: hidden;
-    background: #fff;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-  }
-  
-  .Group_box_left {
-    width: 320px;
-    border-right: 1px solid #ececec;
-    background: #f8f9ff;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .Group_box_right {
-    flex: 1;
-    display: flex;
-    background: #fff;
-  }
-  
-  .placeholder {
-    margin: auto;
-    color: #888;
-    font-size: 18px;
-  }
-  
+  height: calc(100vh - 72px);   /* full height under navbar */
+  display: flex;
+  justify-content: center;
+  background: #f2f4f8;
+}
+
+.Group_box {
+  width: 100%;
+  max-width: 1350px;
+  display: flex;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.Group_box_left {
+  width: 300px;
+  background: #fafbfe;
+  border-right: 1px solid #e3e5ee;
+  display: flex;
+  flex-direction: column;
+}
+
+.Group_box_right {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+.placeholder {
+  margin: auto;
+  color: #9aa0b1;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+
+/* Components/Group/GroupList.module.css */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #e3e5ee;
+}
+
+.headerTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2e3044;
+}
+
+.newBtn {
+  padding: 8px 16px;
+  border: none;
+  background: #5b4eff;
+  color: #ffffff;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.newBtn:hover {
+  background: #483dff;
+}
+
+.list {
+  flex: 1;
+  overflow-y: auto;
+  background: #fafbfe;
+}
+
+.empty {
+  text-align: center;
+  color: #9aa0b1;
+  padding: 48px 0;
+  font-size: 15px;
+}
+
+/* Each group card in sidebar */
+.card {
+  display: block;              /* Link wrapper */
+  padding: 16px 20px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  border-bottom: 1px solid #e3e5ee;
+}
+
+.card:hover {
+  background: #f0f1fb;
+  box-shadow: inset 4px 0 0 0 #5b4eff;
+}
+
+.active {
+  background: #e2e3fd;
+  box-shadow: inset 4px 0 0 0 #483dff;
+}
+
+.name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2e3044;
+}
+
+.count {
+  margin-top: 4px;
+  color: #7a7d8c;
+  font-size: 13px;
+}
