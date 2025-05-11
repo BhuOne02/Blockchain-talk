@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -6,6 +7,29 @@ import Style from './Chat.module.css';
 import images from '../../../assets';
 import { convertTime } from '../../../Utils/apiFeature';
 import { Loader } from '../../index';
+
+// --- Pinata upload ---
+const uploadToPinata = async (file) => {
+  const formData = new FormData();
+  formData.append("file", file);
+
+  try {
+    const res = await fetch("https://api.pinata.cloud/pinning/pinFileToIPFS", {
+      method: "POST",
+      headers: {
+        pinata_api_key: "d2f4cc378c9a52bd8952",
+        pinata_secret_api_key: "4b8820acc6d52637b209248707b83cdd2d2dd0ff08d335f6f5dcd946458352fe"
+      },
+      body: formData
+    });
+
+    const data = await res.json();
+    return `https://gateway.pinata.cloud/ipfs/${data.IpfsHash}`;
+  } catch (err) {
+    console.error("Pinata upload error:", err);
+    return null;
+  }
+};
 
 const Chat = ({
   functionName,
@@ -30,13 +54,20 @@ const Chat = ({
     }
   }, [router.isReady, router.query]);
 
-  console.log("📨 friendMsg:", friendMsg);
-  
-  
+  const handleFileUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const ipfsUrl = await uploadToPinata(file);
+    if (!ipfsUrl) return alert("Failed to upload file.");
+
+    if (!chatData.address) return alert("Select a recipient first.");
+    await functionName({ msg: ipfsUrl, address: chatData.address });
+  };
 
   return (
     <div className={Style.Chat}>
-      {/* Header with selected user */}
+      {/* Header */}
       {currentUserName && currentUserAddress && (
         <div className={Style.Chat_user_info}>
           <Image src={images.friendname} alt="avatar" width={70} height={70} />
@@ -51,30 +82,30 @@ const Chat = ({
       <div className={Style.Chat_box_box}>
         <div className={Style.Chat_box}>
           <div className={Style.Chat_box_left}>
-            {friendMsg.map((el, i) => (
-              <div key={i} className={Style.Chat_msg_block}>
-                {el.sender === chatData.address ? (
-                  <div className={Style.Chat_msg_left}>
-                    <Image src={images.personpic} alt="sender" width={50} height={50} />
-                    <span>
-                      {chatData.name} <small>{convertTime(el.timestamp)}</small>
+          {friendMsg.map((el, i) => {
+              const isMe = el.sender.toLowerCase() === account.toLowerCase();
+              const dName = isMe ? userName : chatData.name;
+
+              return (
+                <div key={i} className={isMe ? Style.right : Style.left}>
+                  <Image src={images.personpic} alt="avatar" width={50} height={50} />
+                  <div>
+                    <span className={Style.name}>
+                      {dName} <small>{convertTime(el.timestamp)}</small>
                     </span>
+                    {el.msg.startsWith("http") && el.msg.includes("ipfs") ? (
+                      <img src={el.msg} alt="media" style={{ maxWidth: "300px", borderRadius: "8px", marginTop: "6px" }} />
+                    ) : (
+                      <p>{el.msg}</p>
+                    )}
                   </div>
-                ) : (
-                  <div className={Style.Chat_msg_right}>
-                    <Image src={images.personpic} alt="you" width={50} height={50} />
-                    <span>
-                      {userName} <small>{convertTime(el.timestamp)}</small>
-                    </span>
-                  </div>
-                )}
-                <p>{el.msg}</p>
-              </div>
-            ))}
+                </div>
+              );
+            })}
           </div>
         </div>
 
-        {/* Send Message Box */}
+        {/* Input */}
         {currentUserName && currentUserAddress && (
           <div className={Style.Chat_box_send}>
             <Image src={images.message} alt="input" width={40} height={40} />
@@ -85,7 +116,16 @@ const Chat = ({
               onChange={(e) => setMessage(e.target.value)}
               className={Style.Chat_input}
             />
-            <Image src={images.file} alt="file" width={40} height={40} />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileUpload}
+              style={{ display: "none" }}
+              id="media-upload"
+            />
+            <label htmlFor="media-upload">
+              <Image src={images.file} alt="upload" width={40} height={40} style={{ cursor: "pointer" }} />
+            </label>
             {loading ? (
               <Loader />
             ) : (
@@ -100,6 +140,7 @@ const Chat = ({
                     return;
                   }
                   functionName({ msg: message, address: chatData.address });
+                  setMessage('');
                 }}
                 className={Style.Chat_send_btn}
               />

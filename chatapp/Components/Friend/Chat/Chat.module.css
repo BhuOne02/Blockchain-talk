@@ -91,3 +91,36 @@
 .Chat_send_btn:hover {
   transform: scale(1.1);
 }
+
+.chat_image {
+  max-width: 200px;
+  border-radius: 8px;
+  margin-top: 6px;
+}
+
+/* Add to Chat.module.css */
+.right {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  text-align: right;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.left {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.name {
+  font-weight: 600;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 2px;
+}

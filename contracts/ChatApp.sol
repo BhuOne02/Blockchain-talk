@@ -30,6 +30,12 @@ contract ChatApp {
         address accountAddress;
     }
 
+    struct ImageMessage {
+        address sender;
+        uint256 timestamp;
+        string ipfsHash;
+    }
+
     struct Group {
         string   name;
         address  admin;            // creator
@@ -53,6 +59,7 @@ contract ChatApp {
     mapping(uint256 => Group)          private groups;   // id ⇒ Group
     mapping(uint256 => GroupMessage[]) private gMessages;// id ⇒ msgs
     mapping(address => uint256[])      private myGroups; // user ⇒ ids
+    mapping(bytes32 => ImageMessage[]) public imageMessages;
 
 
     event FriendRequestSent(address indexed from, address indexed to);
@@ -247,6 +254,14 @@ function getPendingRequests() external view returns (FriendRequestStruct[] memor
         Group storage g = groups[gid];
         return (g.name, g.members);
     }
+
+    function sendImageMessage(address to, string calldata ipfsHash) external {
+        require(checkUserExists(msg.sender), "Register first");
+        require(users[msg.sender].isFriend[to], "Not friends");
+
+        bytes32 chatCode = _getChatCode(msg.sender, to);
+        imageMessages[chatCode].push(ImageMessage(msg.sender, block.timestamp, ipfsHash));
+}
 
 
 

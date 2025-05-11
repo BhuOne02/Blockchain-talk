@@ -53,7 +53,7 @@ const UserCard = ({ el, type, addFriend, sendFriendRequest, setPending, pending,
         {type === "friend" && (
           <Link
             href={{
-              pathname: "/",
+              pathname: "/chat",
               query: { name: el.name, address: el.accountAddress },
             }}
           >
