@@ -60,7 +60,7 @@ const gname = meta ? meta.name : `Group #${gid}`;
   return (
 
     <div className={Style.pageWrapper}>
-            <div className={Style.Chat}>
+    <div className={Style.Chat}>
       {/* HEADER */}
       <div className={Style.Chat_header}>
         <h3>{gname}</h3>
